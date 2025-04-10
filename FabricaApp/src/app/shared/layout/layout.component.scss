@@ -1,0 +1,145 @@
+.color-navbar{
+    background-color: #007C9B;
+    color: aliceblue;
+  }
+  .example-container {
+    width: 100%;
+    height: 94%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  .example-sidenav-content {
+    display: flex;
+    height: 94%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .example-sidenav {
+    padding: 20px;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  /* Cuando la pantalla es menor a 900px  (tablets y teléfonos inteligentes)*/
+  @media only screen and (max-width : 900px) {
+    .ocultar-cel{
+    display: none;
+    }
+
+    .small-cel-text{
+      font-size: 100%;
+    }
+  }
+
+
+
+
+  a.hover-menu:hover{
+    color: rgb(0, 0, 0);
+  }
+  
+  .nav-item{
+    padding: 5px;
+  }
+  
+  .hover-menu{
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgb(246, 246, 246);
+    padding: 5px;
+    margin: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: color 1s;
+  
+  }
+  
+  .hover-menu::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: 0;
+    height: 94%;
+    // background-color: aquamarine;
+    transform: skewX(35deg);
+    z-index: -1;
+    transition: width 1sg;
+  }
+  
+  
+  
+
+  .example-container {
+    width: 100%;
+    height: 94%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 94%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  /* Cuando la pantalla es menor a 900px  (tablets y teléfonos inteligentes)*/
+  @media only screen and (max-width : 900px) {
+    .ocultar-cel{
+    display: none;
+    }
+  
+    .small-cel-text{
+      font-size: 100%;
+    }
+  
+    .hover-menu{
+      font-size: 65%;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: rgb(253, 253, 253);
+      padding: 5px;
+      margin: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: color 1s;
+    }
+  
+    .hover-menu::before{
+      font-size: 65%;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50px;
+      width: 0;
+      height: 94%;
+      // background-color: aquamarine;
+      transform: skewX(35deg);
+      z-index: -1;
+      transition: width 1sg;
+    }
+  
+    .hover-menu:hover{
+      font-size: 65%;
+      // background-color: #007C9B;
+      color: rgb(4, 4, 4);
+      border-radius: 8px;
+  
+    }
+  
+  }
+  
+  
+

@@ -1,0 +1,24 @@
+<mat-toolbar class="color-navbar">
+    <button class="m-2 color-navbar" (click)="drawer.toggle()" mat-mini-fab aria-label="Example icon button with a menu icon">
+      <mat-icon>menu</mat-icon>
+      </button>
+      <span class="small-cel-text">Fabrica Pedidos Carvajal.</span>
+      <span class="example-spacer"></span>
+      <span class="text-right ocultar-cel">Exit</span>
+      <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+  </mat-toolbar>
+  <mat-drawer-container  class="example-container ocultar">
+    <mat-drawer #drawer class="example-sidenav color-side" mode="side">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item hover-menu" routerLinkActive="router-link-active">
+                <a class="hover-menu" [routerLink]="['/products']"><mat-icon>home</mat-icon> Productos</a>
+            </li>
+            <li class="nav-item hover-menu" routerLinkActive="router-link-active">
+                <a class="hover-menu" [routerLink]="['/orders']"><mat-icon>assignment</mat-icon> Pedidos</a>
+            </li>
+        </ul>
+    </mat-drawer>
+    <router-outlet ></router-outlet>
+</mat-drawer-container>

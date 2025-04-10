@@ -1,0 +1,86 @@
+<mat-toolbar>
+  <a class="hover-menu" [routerLink]="['/login']">
+      <button mat-raised-button  class="demo-button">
+          Ingresar
+      </button>
+  </a>
+</mat-toolbar>
+
+<div class="container">
+    <div class="row text-center login-page">
+      <div class="col-md-12 login-form center">
+        <p class="login-form-font-header">Registrar <span>Usuario</span></p>
+        <p></p>
+        <form class="example-form" [formGroup]="formregister" autocomplete="off" (ngSubmit)="registeruser()">
+          <div class="row">
+            <div class="col-md-12 login-from-row center">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" name="email"
+                  placeholder="Ex. pat@example.com" />
+                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                <mat-error *ngIf="
+                    this.formregister.get('email')?.hasError('email') &&
+                    !this.formregister.get('email')?.hasError('required')
+                  ">
+                  Porfavor ingresa un Email valido
+                </mat-error>
+                <mat-error *ngIf="this.formregister.get('email')?.hasError('required')">
+                  Email es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12 login-from-row center">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombres y Apellidos</mat-label>
+                <input type="text" matInput formControlName="usuario" name="usuario"
+                  placeholder="Ex. NombreUsuario" />
+                <mat-error *ngIf="!this.formregister.get('usuario')?.hasError('required')">
+                  Nombres y Apellidos son <strong>requeridos</strong>
+                </mat-error>
+                <mat-error *ngIf="this.formregister.get('usuario')?.hasError('required')">
+                  Nombres y Apellidos <strong>requeridos</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12 login-from-row center">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="contraseña" name="contraseña"
+                   placeholder="Ex. pat@example.com" />
+                <mat-error *ngIf="
+                    !this.formregister.get('contraseña')?.hasError('required')
+                  ">
+                  Porfavor ingresa una contraseña
+                </mat-error>
+                <mat-error *ngIf="
+                    this.formregister.get('contraseña')?.hasError('required')
+                  ">
+                  Contraseña es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <!-- <br> -->
+          <div class="row">
+            <div class="col-md-12 login-from-row center">
+              <div class="example-button-row">
+                <button type="submit" [disabled]="this.formregister.invalid" class="btn btn-primary btn-register">
+                  Registrar
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
+        </form>
+      </div>
+    </div>
+  </div>
+  

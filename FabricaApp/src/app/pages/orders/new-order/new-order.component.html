@@ -1,0 +1,20 @@
+<div class="example-container">
+    <form [formGroup]="formNew" (submit)="guardarProducto()">
+        <mat-form-field appearance="fill">
+            <mat-label >Seleciona Un Producto</mat-label>
+            <mat-select matInput name="food" formControlName="productoID">
+                <mat-option *ngFor="let producto of productsservice.productsAll" [value]="producto.id">
+                  {{producto.prodDesc}}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label >Cantidad</mat-label>
+            <input matInput [type]="'text'" formControlName="cantidad">
+        </mat-form-field>
+        <br>
+    <br>
+    <button mat-raised-button color="accent">Guardar</button>
+    </form>
+  </div>
