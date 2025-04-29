@@ -1,57 +1,175 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-  
-  .containerOwnApp {
-      box-shadow: 0 0 27px 0 rgba(84, 84, 84, 0.62);
-      padding-top: 15px;
-   }
-  
-   .login-page {
-     padding: 18% 0 0;
-     margin: 0 auto 100px;
-     max-width: 360px;
-     position: relative;
-   }
-  
-   .login-form {
-      box-shadow: 0 0 27px 0 rgba(84, 84, 84, 0.62);
-   }
-  
-   .login-form-header {
-      padding-top: 16px;
-   }
-  
-   .login-from-row {
-      padding-top: 16px;
-      padding-bottom: 16px;
-   }
-  
-   .login-form-font-header {
-      font-size:30px;
-      font-weight: bold;
-   }
-  
-   .login-form-font-header span {
-      color: #007C9B;
-   }
-  
-   .login-page{
-     margin-top: 2%;
-     padding-top: 2%;
-   }
-  
-   .btn-register{
-    color: rgb(0, 0, 0);
-   }
+// Paleta corregida para el registro
+$background-color: #0c0c1e;
+$card-background: rgba(255, 255, 255, 0.05);
+$border-color: #3b82f6;
+$text-color: #f1f5f9;
+$placeholder-color: #94a3b8;
+$blur: 20px;
 
-   div.center{
+// Tipografía moderna
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
 
-      text-align: center;
-   }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: $background-color;
+  overflow: hidden;
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: $background-color;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png') repeat;
+  opacity: 0.05;
+  z-index: 1;
+  background-size: cover;
+}
+
+// Barra de herramientas para el registro
+.toolbar-register {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background: transparent;
+  padding: 1.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  .register-button {
+    background: transparent;
+    border: 2px solid $border-color;
+    color: $border-color;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $border-color;
+      color: white;
+    }
+  }
+}
+
+// Estilo para la caja de registro
+.register-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  z-index: 5;
+}
+
+.register-card {
+  background: $card-background;
+  backdrop-filter: blur($blur);
+  border-radius: 25px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  padding: 3rem 2rem;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1.5s ease;
+  z-index: 10;
+}
+
+.register-title {
+  font-size: 2rem;
+  color: $text-color;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  input {
+    width: 100%;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 10px;
+    color: $text-color;
+    font-size: 1rem;
+    outline: none;
+
+    &::placeholder {
+      color: $placeholder-color;
+    }
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $border-color;
+    font-size: 1.2rem;
+  }
+}
+
+// Botón de registro
+.register-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: 2px solid $border-color;
+  color: $border-color;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $border-color;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Animación de entrada suave
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

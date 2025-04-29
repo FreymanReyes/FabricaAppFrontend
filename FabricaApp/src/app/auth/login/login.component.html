@@ -13,12 +13,12 @@
         <h1 class="login-title">Fábrica Carvajal</h1>
 
         <div class="input-container">
-          <i class="fa fa-user input-icon"></i>
+          <fa-icon [icon]="faUser" class="input-icon"></fa-icon>
           <input formControlName="usuario" name="usuario" type="text" placeholder="Usuario" required />
         </div>
 
         <div class="input-container">
-          <i class="fa fa-lock input-icon"></i>
+          <fa-icon [icon]="faLock" class="input-icon"></fa-icon>
           <input formControlName="contraseña" name="password" type="password" placeholder="Contraseña" required />
         </div>
 

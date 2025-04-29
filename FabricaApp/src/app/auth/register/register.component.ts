@@ -3,7 +3,7 @@ import { UntypedFormBuilder, FormControl, UntypedFormGroup, FormGroupDirective, 
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { OauthService } from '../../services/oauth.service';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -16,6 +16,9 @@ import { ErrorStateMatcher } from '@angular/material/core';
 })
 export class RegisterComponent implements OnInit {
 
+  faUser = faUser;
+  faLock = faLock;
+  faEnvelope = faEnvelope;
 
   formregister!:UntypedFormGroup;
 

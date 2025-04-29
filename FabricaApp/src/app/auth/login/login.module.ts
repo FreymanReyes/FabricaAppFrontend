@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon'
 import { ToastrModule } from 'ngx-toastr';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -32,6 +33,7 @@ const ruta: Route [] = [
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
+    FontAwesomeModule,
     ToastrModule.forRoot(),
     MatFormFieldModule,
     MatToolbarModule

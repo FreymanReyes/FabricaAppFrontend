@@ -10,6 +10,7 @@ import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from './shared/layout/layout.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({ declarations: [
@@ -23,5 +24,6 @@ import { LayoutModule } from './shared/layout/layout.module';
         LoginModule,
         RegisterModule,
         BrowserAnimationsModule,
+        FontAwesomeModule,
         LayoutModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
