@@ -8,9 +8,10 @@ import { ProductsService } from '../../../services/products.service';
 import { OrdersComponent } from '../orders.component';
 
 @Component({
-  selector: 'app-new-order',
-  templateUrl: './new-order.component.html',
-  styleUrls: ['./new-order.component.scss']
+    selector: 'app-new-order',
+    templateUrl: './new-order.component.html',
+    styleUrls: ['./new-order.component.scss'],
+    standalone: false
 })
 export class NewOrderComponent implements OnInit {
 

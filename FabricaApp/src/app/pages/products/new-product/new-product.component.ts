@@ -8,9 +8,10 @@ import { ProductsComponent } from '../products.component';
 import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 
 @Component({
-  selector: 'app-new-product',
-  templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.scss']
+    selector: 'app-new-product',
+    templateUrl: './new-product.component.html',
+    styleUrls: ['./new-product.component.scss'],
+    standalone: false
 })
 export class NewProductComponent implements OnInit {
   
