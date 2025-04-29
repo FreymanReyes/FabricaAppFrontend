@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { ProductsService } from '../../../services/products.service';
 import { MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material/dialog';
 import { ProductsComponent } from '../products.component';
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
+
 
 @Component({
     selector: 'app-new-product',
