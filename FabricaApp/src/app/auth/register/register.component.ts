@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { OauthService } from '../../services/oauth.service';
@@ -16,10 +16,10 @@ import { ErrorStateMatcher } from '@angular/material/core';
 export class RegisterComponent implements OnInit {
 
 
-  formregister!:FormGroup;
+  formregister!:UntypedFormGroup;
 
   constructor(
-    private fb:FormBuilder,
+    private fb:UntypedFormBuilder,
     private RegisterService:OauthService,
     private toastr:ToastrService,
     private router:Router) {

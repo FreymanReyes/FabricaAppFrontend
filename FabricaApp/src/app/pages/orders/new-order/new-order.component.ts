@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -16,7 +16,7 @@ export class NewOrderComponent implements OnInit {
 
   hide = true;
 
-  formNew!: FormGroup;
+  formNew!: UntypedFormGroup;
 
   productos!:[];
 
@@ -28,7 +28,7 @@ export class NewOrderComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder,private orderservice: OrdersService,public productsservice: ProductsService, private toastr:ToastrService
+  constructor(private fb: UntypedFormBuilder,private orderservice: OrdersService,public productsservice: ProductsService, private toastr:ToastrService
     ,public dialogRef: MatDialogRef<OrdersComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { 
       this.statusform = this.data.status;
     }

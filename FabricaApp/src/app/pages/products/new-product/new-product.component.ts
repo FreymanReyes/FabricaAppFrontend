@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { ProductsService } from '../../../services/products.service';
@@ -16,13 +16,13 @@ export class NewProductComponent implements OnInit {
   
   hide = true;
 
-  formNew!: FormGroup
+  formNew!: UntypedFormGroup
 
   datoprooducto:any;
   subslistusuarios?:Subscription;
   statusform:string = "";
 
-  constructor(private fb: FormBuilder,private Productsservice: ProductsService, private toastr:ToastrService
+  constructor(private fb: UntypedFormBuilder,private Productsservice: ProductsService, private toastr:ToastrService
     ,public dialogRef: MatDialogRef<ProductsComponent>,@Inject(MAT_DIALOG_DATA) public data: any) 
     { 
       this.statusform = this.data.status;
