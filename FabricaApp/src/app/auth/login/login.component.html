@@ -42,8 +42,9 @@
           <div class="error-message" *ngIf="formlogin.get('contraseña')?.errors && formlogin.get('contraseña')?.touched">
             <span *ngIf="formlogin.get('contraseña')?.errors?.['required']">La Contraseña es obligatoria.</span>
             <span *ngIf="formlogin.get('contraseña')?.errors?.['minlength']">
-              La Contraseña Debe Tener Mínimo {{ formlogin.get('contraseña')?.errors?.['minlength']?.requiredLength }} caracteres.
+              Mínimo {{ formlogin.get('contraseña')?.errors?.['minlength']?.requiredLength }} caracteres.
             </span>
+            <span *ngIf="formlogin.get('contraseña')?.errors?.['pattern']">Alfanumérica y carácter especial.</span>
           </div>
         </div>
 

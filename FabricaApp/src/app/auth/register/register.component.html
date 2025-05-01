@@ -38,8 +38,8 @@
         
           <div class="error-message" *ngIf="formregister.get('email')?.errors && formregister.get('email')?.touched">
             <span *ngIf="formregister.get('email')?.errors?.['required']">El email es obligatorio.</span>
-            <span *ngIf="formregister.get('email')?.errors?.['minlength']">
-              Email Debe Tener Mínimo {{ formregister.get('email')?.errors?.['minlength']?.requiredLength }} caracteres.
+            <span *ngIf="formregister.get('email')?.errors?.['email']">
+              Formato invalido de email.
             </span>
           </div>
         </div>
@@ -55,11 +55,12 @@
           </fa-icon>
           <input formControlName="contraseña" type="password" placeholder="Contraseña" />
         
-          <div class="error-message" *ngIf="formregister.get('contraseña')?.errors && formregister.get('contraseña')?.touched">
+          <div class="error-message" *ngIf="formregister.get('contraseña')?.touched && formregister.get('contraseña')?.errors">
             <span *ngIf="formregister.get('contraseña')?.errors?.['required']">La Contraseña es obligatoria.</span>
             <span *ngIf="formregister.get('contraseña')?.errors?.['minlength']">
-              La Contraseña Debe Tener Mínimo {{ formregister.get('contraseña')?.errors?.['minlength']?.requiredLength }} caracteres.
+              Mínimo {{ formregister.get('contraseña')?.errors?.['minlength']?.requiredLength }} caracteres.
             </span>
+            <span *ngIf="formregister.get('contraseña')?.errors?.['pattern']">Alfanumérica y carácter especial.</span>
           </div>
         </div>
 
