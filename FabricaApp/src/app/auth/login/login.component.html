@@ -12,17 +12,52 @@
       <form [formGroup]="formlogin" autocomplete="off" (ngSubmit)="loginuser()">
         <h1 class="login-title">Fábrica Carvajal</h1>
 
-        <div class="input-container">
+        <div class="input-container"
+          [ngClass]="{
+            'valid': formlogin.get('usuario')?.valid && formlogin.get('usuario')?.touched,
+            'invalid': formlogin.get('usuario')?.invalid && formlogin.get('usuario')?.touched
+          }">
           <fa-icon [icon]="faUser" class="input-icon"></fa-icon>
           <input formControlName="usuario" name="usuario" type="text" placeholder="Usuario" required />
+
+          <div class="error-message" *ngIf="formlogin.get('usuario')?.errors && formlogin.get('usuario')?.touched">
+            <span *ngIf="formlogin.get('usuario')?.errors?.['required']">El usuario es obligatorio.</span>
+            <span *ngIf="formlogin.get('usuario')?.errors?.['minlength']">
+              Usuario Debe Tener Mínimo {{ formlogin.get('usuario')?.errors?.['minlength']?.requiredLength }} caracteres.
+            </span>
+          </div>
         </div>
 
-        <div class="input-container">
-          <fa-icon [icon]="faLock" class="input-icon"></fa-icon>
+        <div class="input-container"
+          [ngClass]="{
+            'valid': formlogin.get('contraseña')?.valid && formlogin.get('contraseña')?.touched,
+            'invalid': formlogin.get('contraseña')?.invalid && formlogin.get('contraseña')?.touched
+          }">
+          <fa-icon 
+            [icon]="formlogin.get('contraseña')?.invalid && formlogin.get('contraseña')?.touched ? faLockOpen : faLock" 
+            class="input-icon">
+          </fa-icon>
           <input formControlName="contraseña" name="password" type="password" placeholder="Contraseña" required />
+
+          <div class="error-message" *ngIf="formlogin.get('contraseña')?.errors && formlogin.get('contraseña')?.touched">
+            <span *ngIf="formlogin.get('contraseña')?.errors?.['required']">La Contraseña es obligatoria.</span>
+            <span *ngIf="formlogin.get('contraseña')?.errors?.['minlength']">
+              La Contraseña Debe Tener Mínimo {{ formlogin.get('contraseña')?.errors?.['minlength']?.requiredLength }} caracteres.
+            </span>
+          </div>
         </div>
 
-        <button type="submit" [disabled]="formlogin.invalid" class="login-button">
+        <button 
+          type="submit" 
+          [disabled]="formlogin.invalid" 
+          class="login-button"
+          [ngClass]="{
+            'valid': formlogin.valid && formlogin.touched,
+            'invalid': formlogin.invalid && formlogin.touched
+          }">
+          <svg class="status-icon" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="4" cy="4" r="3" />
+          </svg>
           Ingresar
         </button>
       </form>

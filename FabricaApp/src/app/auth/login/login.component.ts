@@ -3,7 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { OauthService } from 'src/app/services/oauth.service';
-import { faUser, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock, faEye, faEyeSlash, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-login',
@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   faLock = faLock;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
+  faLockOpen = faLockOpen;
 
   passwordVisible = false;
 
@@ -29,8 +30,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formlogin = this.fb.group({
-      usuario: ['fareyes32', [Validators.required]],
-      contraseña: ['Fareyes32$', Validators.required]
+      usuario: ['', [Validators.required, Validators.minLength(6)]],
+      contraseña: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
 

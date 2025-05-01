@@ -3,7 +3,7 @@ import { UntypedFormBuilder, FormControl, UntypedFormGroup, FormGroupDirective, 
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { OauthService } from '../../services/oauth.service';
-import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock, faEnvelope,faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   faUser = faUser;
   faLock = faLock;
   faEnvelope = faEnvelope;
+  faLockOpen = faLockOpen;
 
   formregister!:UntypedFormGroup;
 
@@ -32,9 +33,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.formregister = this.fb.group({
-      email: ['FAREYES31@MISENA.EDU.CO', [Validators.email, Validators.required]],
-      usuario: ['ANDRESREYES', [ Validators.required]],
-      contraseña: ['12345678fF$',[ Validators.required, Validators.minLength(8)]]
+      email: ['', [Validators.email, Validators.required]],
+      usuario: ['', [ Validators.required, Validators.minLength(6)]],
+      contraseña: ['',[ Validators.required, Validators.minLength(8)]]
     })
   }
 

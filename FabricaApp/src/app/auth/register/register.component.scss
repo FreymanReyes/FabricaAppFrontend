@@ -72,7 +72,6 @@ html, body {
   }
 }
 
-// Estilo para la caja de registro
 .register-wrapper {
   display: flex;
   align-items: center;
@@ -88,7 +87,7 @@ html, body {
   border-radius: 25px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
   padding: 3rem 2rem;
-  width: 320px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,13 +109,13 @@ html, body {
   margin-bottom: 1.5rem;
 
   input {
+    font-size: 1.05rem;
     width: 100%;
     padding: 0.75rem 0.75rem 0.75rem 2.5rem;
     background: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 10px;
     color: $text-color;
-    font-size: 1rem;
     outline: none;
 
     &::placeholder {
@@ -135,6 +134,27 @@ html, body {
     transform: translateY(-50%);
     color: $border-color;
     font-size: 1.2rem;
+  }
+}
+
+// Validaciones
+.input-container.invalid {
+  .input-icon {
+    color: #ef4444;
+  }
+  input {
+    border: 1px solid #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+  }
+}
+
+.input-container.valid {
+  .input-icon {
+    color: #66ef44;
+  }
+  input {
+    border: 1px solid #66ef44;
+    background: rgba(99, 239, 68, 0.1);
   }
 }
 
@@ -160,9 +180,27 @@ html, body {
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  &.valid .status-icon {
+    fill: #66ef44;
+  }
+
+  &.invalid .status-icon {
+    fill: #ef4444;
+  }
 }
 
-// Animación de entrada suave
+// Icono de validación
+.status-icon {
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  fill: gray;
+  transition: fill 0.3s ease;
+  vertical-align: middle;
+}
+
+// Animación de entrada
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -172,4 +210,12 @@ html, body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+// Mensaje de error
+.error-message {
+  margin-top: 0.25rem;
+  color: #ef4444;
+  font-size: 0.75rem;
+  position: static;
 }

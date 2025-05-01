@@ -171,3 +171,48 @@ html, body {
     transform: translateY(0);
   }
 }
+
+// Validaciones
+.input-container.invalid {
+  .input-icon {
+    color: #ef4444; // rojo
+  }
+  input {
+    border: 1px solid #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+  }
+}
+
+.input-container.valid {
+  .input-icon {
+    color: #66ef44; // verde
+  }
+  input {
+    border: 1px solid #66ef44;
+    background: rgba(99, 239, 68, 0.1);
+  }
+}
+
+.status-icon {
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  fill: gray;
+  transition: fill 0.3s ease;
+  vertical-align: middle;
+}
+
+.login-button.valid .status-icon {
+  fill: #66ef44;
+}
+
+.login-button.invalid .status-icon {
+  fill: #ef4444;
+}
+
+.error-message {
+  margin-top: 0.25rem;
+  color: #ef4444;
+  font-size: 0.75rem;
+  position: static;
+}

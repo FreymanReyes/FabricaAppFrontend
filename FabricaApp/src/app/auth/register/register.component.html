@@ -11,23 +11,69 @@
     <div class="register-card">
       <form [formGroup]="formregister" autocomplete="off" (ngSubmit)="registeruser()">
         <h1 class="register-title">Fábrica Carvajal</h1>
-
-        <div class="input-container">
+        
+        <div class="input-container"
+            [ngClass]="{
+              'valid': formregister.get('usuario')?.valid && formregister.get('usuario')?.touched,
+              'invalid': formregister.get('usuario')?.invalid && formregister.get('usuario')?.touched
+            }">
           <fa-icon [icon]="faUser" class="input-icon"></fa-icon>
-          <input formControlName="usuario" name="usuario" type="text" placeholder="Nombres y Apellidos" required />
+          <input formControlName="usuario" type="text" placeholder="Nombres y Apellidos" />
+
+          <div class="error-message" *ngIf="formregister.get('usuario')?.errors && formregister.get('usuario')?.touched">
+            <span *ngIf="formregister.get('usuario')?.errors?.['required']">El usuario es obligatorio.</span>
+            <span *ngIf="formregister.get('usuario')?.errors?.['minlength']">
+              Usuario Debe Tener Mínimo {{ formregister.get('usuario')?.errors?.['minlength']?.requiredLength }} caracteres.
+            </span>
+          </div>
         </div>
 
-        <div class="input-container">
+        <div class="input-container"
+            [ngClass]="{
+              'valid': formregister.get('email')?.valid && formregister.get('email')?.touched,
+              'invalid': formregister.get('email')?.invalid && formregister.get('email')?.touched
+            }">
           <fa-icon [icon]="faEnvelope" class="input-icon"></fa-icon>
-          <input formControlName="email" name="email" type="email" placeholder="Correo electrónico" required />
+          <input formControlName="email" type="email" placeholder="Correo electrónico" />
+        
+          <div class="error-message" *ngIf="formregister.get('email')?.errors && formregister.get('email')?.touched">
+            <span *ngIf="formregister.get('email')?.errors?.['required']">El email es obligatorio.</span>
+            <span *ngIf="formregister.get('email')?.errors?.['minlength']">
+              Email Debe Tener Mínimo {{ formregister.get('email')?.errors?.['minlength']?.requiredLength }} caracteres.
+            </span>
+          </div>
         </div>
 
-        <div class="input-container">
-          <fa-icon [icon]="faLock" class="input-icon"></fa-icon>
-          <input formControlName="contraseña" name="password" type="password" placeholder="Contraseña" required />
+        <div class="input-container"
+            [ngClass]="{
+              'valid': formregister.get('contraseña')?.valid && formregister.get('contraseña')?.touched,
+              'invalid': formregister.get('contraseña')?.invalid && formregister.get('contraseña')?.touched
+            }">
+          <fa-icon
+            [icon]="formregister.get('contraseña')?.invalid && formregister.get('contraseña')?.touched ? faLockOpen : faLock"
+            class="input-icon">
+          </fa-icon>
+          <input formControlName="contraseña" type="password" placeholder="Contraseña" />
+        
+          <div class="error-message" *ngIf="formregister.get('contraseña')?.errors && formregister.get('contraseña')?.touched">
+            <span *ngIf="formregister.get('contraseña')?.errors?.['required']">La Contraseña es obligatoria.</span>
+            <span *ngIf="formregister.get('contraseña')?.errors?.['minlength']">
+              La Contraseña Debe Tener Mínimo {{ formregister.get('contraseña')?.errors?.['minlength']?.requiredLength }} caracteres.
+            </span>
+          </div>
         </div>
 
-        <button type="submit" [disabled]="formregister.invalid" class="register-button">
+        <button 
+          type="submit" 
+          [disabled]="formregister.invalid" 
+          class="register-button"
+          [ngClass]="{
+            'valid': formregister.valid && formregister.touched,
+            'invalid': formregister.invalid && formregister.touched
+          }">
+          <svg class="status-icon" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="4" cy="4" r="3" />
+          </svg>
           Registrar
         </button>
       </form>
