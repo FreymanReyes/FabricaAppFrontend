@@ -1,0 +1,6 @@
+{
+  "root": "dist/fabrica-app",
+  "routes": {
+    "/**": "index.html"
+  }
+}
