@@ -106,11 +106,14 @@ html, body {
 .input-container {
   position: relative;
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
   input {
     width: 100%;
-    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    padding: 0.75rem 2.5rem 0.75rem 2.5rem; /* Ajuste aquí para asegurar espacio para los iconos */
     background: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 10px;
@@ -129,11 +132,33 @@ html, body {
 
   .input-icon {
     position: absolute;
-    left: 0.8rem;
+    left: 1rem; /* Asegura que el icono no se sobreponga al texto */
     top: 50%;
     transform: translateY(-50%);
     color: $border-color;
     font-size: 1.2rem;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .toggle-password {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 1rem; /* Coloca el botón de visibilidad de la contraseña a la derecha */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: $border-color;
+    z-index: 1;
+    font-size: 1.2rem;
+  }
+
+  .error-message {
+    margin-top: 0.5rem;
+    color: #ef4444;
+    font-size: 0.75rem;
+    min-height: 1.2rem;
   }
 }
 
@@ -175,7 +200,7 @@ html, body {
 // Validaciones
 .input-container.invalid {
   .input-icon {
-    color: #ef4444; // rojo
+    color: #ef4444;
   }
   input {
     border: 1px solid #ef4444;
@@ -185,7 +210,7 @@ html, body {
 
 .input-container.valid {
   .input-icon {
-    color: #66ef44; // verde
+    color: #66ef44;
   }
   input {
     border: 1px solid #66ef44;
@@ -208,11 +233,4 @@ html, body {
 
 .login-button.invalid .status-icon {
   fill: #ef4444;
-}
-
-.error-message {
-  margin-top: 0.25rem;
-  color: #ef4444;
-  font-size: 0.75rem;
-  position: static;
 }

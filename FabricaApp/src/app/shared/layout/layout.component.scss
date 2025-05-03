@@ -1,145 +1,86 @@
-.color-navbar{
-    background-color: #007C9B;
-    color: aliceblue;
-  }
-  .example-container {
-    width: 100%;
-    height: 94%;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+// Paleta de colores
+$navbar-bg-color: #0c0c1e; // Color de fondo del navbar
+$navbar-text-color: #f1f5f9; // Color de texto del navbar
+$navbar-border-color: #3b82f6; // Color del borde (puedes usarlo para efectos hover o focus)
+
+// Navbar general
+.navbar {
+  display: flex;
+  justify-content: space-between; // Esto asegura que los elementos se distribuyan correctamente
+  align-items: center;
+  background-color: $navbar-bg-color;
+  padding: 10px 20px;
+  border-bottom: 2px solid $navbar-border-color;
+  color: $navbar-text-color;
+  font-weight: 600;
+}
+
+.navbar-title {
+  font-size: 1.2rem;
+  white-space: nowrap; // Asegura que el texto no se rompa
+}
+
+.navbar-toggle {
+  font-size: 1.5rem;
+  color: $navbar-text-color;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-button {
+  font-size: 1.2rem;
+  color: $navbar-text-color;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $navbar-border-color; // Color del icono al pasar el cursor
   }
 
-  .example-sidenav-content {
-    display: flex;
-    height: 94%;
-    align-items: center;
-    justify-content: center;
+  fa-icon {
+    font-size: 1.5rem; // Tamaño del icono
+  }
+}
+
+// Enlaces del Navbar
+.navbar-links {
+  display: flex;
+  justify-content: space-evenly; // Alinea los elementos con espacio uniforme
+  padding: 0 10px; // Ajusta el espacio horizontal
+}
+
+.navbar-link {
+  color: $navbar-text-color;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 0 15px; // Añade más espacio entre los enlaces
+  display: flex; // Para que los iconos y el texto estén alineados horizontalmente
+  align-items: center; // Alinea el icono con el texto
+
+  &:hover {
+    color: $navbar-border-color; // Efecto hover en los enlaces
   }
 
-  .example-sidenav {
-    padding: 20px;
+  fa-icon {
+    margin-right: 8px; // Espacio entre el icono y el texto
+    font-size: 1.2rem; // Tamaño del icono
   }
+}
 
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  /* Cuando la pantalla es menor a 900px  (tablets y teléfonos inteligentes)*/
-  @media only screen and (max-width : 900px) {
-    .ocultar-cel{
-    display: none;
-    }
+.spacer {
+  flex-grow: 1;
+}
 
-    .small-cel-text{
-      font-size: 100%;
-    }
-  }
-
-
-
-
-  a.hover-menu:hover{
-    color: rgb(0, 0, 0);
-  }
-  
-  .nav-item{
-    padding: 5px;
-  }
-  
-  .hover-menu{
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: rgb(246, 246, 246);
-    padding: 5px;
-    margin: 2px;
-    position: relative;
-    overflow: hidden;
-    transition: color 1s;
-  
-  }
-  
-  .hover-menu::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -50px;
-    width: 0;
-    height: 94%;
-    // background-color: aquamarine;
-    transform: skewX(35deg);
-    z-index: -1;
-    transition: width 1sg;
-  }
-  
-  
-  
-
-  .example-container {
-    width: 100%;
-    height: 94%;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-  }
-  
-  .example-sidenav-content {
-    display: flex;
-    height: 94%;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .example-sidenav {
-    padding: 20px;
-  
-  }
-  
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  /* Cuando la pantalla es menor a 900px  (tablets y teléfonos inteligentes)*/
-  @media only screen and (max-width : 900px) {
-    .ocultar-cel{
-    display: none;
-    }
-  
-    .small-cel-text{
-      font-size: 100%;
-    }
-  
-    .hover-menu{
-      font-size: 65%;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      color: rgb(253, 253, 253);
-      padding: 5px;
-      margin: 2px;
-      position: relative;
-      overflow: hidden;
-      transition: color 1s;
-    }
-  
-    .hover-menu::before{
-      font-size: 65%;
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -50px;
-      width: 0;
-      height: 94%;
-      // background-color: aquamarine;
-      transform: skewX(35deg);
-      z-index: -1;
-      transition: width 1sg;
-    }
-  
-    .hover-menu:hover{
-      font-size: 65%;
-      // background-color: #007C9B;
-      color: rgb(4, 4, 4);
-      border-radius: 8px;
-  
-    }
-  
-  }
-  
-  
-
+// Tooltip para el icono de logout (usando Angular Material Tooltip)
+.mat-tooltip {
+  font-size: 1rem;
+  background-color: $navbar-bg-color;
+  color: $navbar-text-color;
+  border: 1px solid $navbar-border-color;
+  padding: 5px;
+  border-radius: 5px;
+}

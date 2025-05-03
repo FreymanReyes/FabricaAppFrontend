@@ -6,27 +6,32 @@ import { OauthService } from 'src/app/services/oauth.service';
 import { faUser, faLock, faEye, faEyeSlash, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
-    standalone: false
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  standalone: false
 })
 export class LoginComponent implements OnInit {
 
+  // ✅ Necesario para manejar la visibilidad de la contraseña
+  hidePassword: boolean = true;
 
+  // Íconos
   faUser = faUser;
   faLock = faLock;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   faLockOpen = faLockOpen;
 
-  passwordVisible = false;
-
+  // Formulario
   formlogin!: UntypedFormGroup;
 
-  constructor(private fb: UntypedFormBuilder, private LoginService: OauthService, private toastr:ToastrService, private router:Router) {
-    
-   }
+  constructor(
+    private fb: UntypedFormBuilder,
+    private LoginService: OauthService,
+    private toastr: ToastrService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.formlogin = this.fb.group({
@@ -39,31 +44,39 @@ export class LoginComponent implements OnInit {
           Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/)
         ]
       ]
-    })
+    });
   }
 
-  togglePassword() {
-    this.passwordVisible = !this.passwordVisible;
+  // Cambiar visibilidad de la contraseña
+  togglePassword(): void {
+    this.hidePassword = !this.hidePassword;
   }
 
-  loginuser(){
-    this.LoginService.loginuser(this.formlogin.value).subscribe((res:any)=>{
-      sessionStorage.setItem('token', res.token);
-      sessionStorage.setItem('IdUsuario', res.id);
-      this.formlogin.reset();
-      this.toastr.success('ACCESO AUTORIZADO!', 'Bienvenido!');
-      this.router.navigate(['products']);
-    },(error:any) => {
-      if(error.status == '401'){
+  // Lógica de login
+  loginuser(): void {
+    if (this.formlogin.invalid) return;
+
+    this.LoginService.loginuser(this.formlogin.value).subscribe({
+      next: (res: any) => {
+        sessionStorage.setItem('token', res.token);
+        sessionStorage.setItem('IdUsuario', res.id);
+        this.formlogin.reset();
+        this.toastr.success('ACCESO AUTORIZADO!', 'Bienvenido!');
+        this.router.navigate(['products']);
+      },
+      error: (error: any) => {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('IdUsuario');
-        this.toastr.error('Valida tus credenciales de acceso!', 'ACCESO NO AUTORIZADO!');
-      }else if(error.status == '500'){
-        this.toastr.error('Sin conexion con el servidor!', 'ERROR!');
-      }else{
-        this.toastr.error('Error no especificado!', 'ERROR!');
+
+        if (error.status === 401) {
+          this.toastr.error('Valida tus credenciales de acceso!', 'ACCESO NO AUTORIZADO!');
+        } else if (error.status === 500) {
+          this.toastr.error('Sin conexión con el servidor!', 'ERROR!');
+        } else {
+          this.toastr.error('Error no especificado!', 'ERROR!');
+        }
       }
-    }
-  )}
+    });
+  }
 
 }

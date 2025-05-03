@@ -12,6 +12,7 @@
       <form [formGroup]="formlogin" autocomplete="off" (ngSubmit)="loginuser()">
         <h1 class="login-title">Fábrica Carvajal</h1>
 
+        <!-- Usuario -->
         <div class="input-container"
           [ngClass]="{
             'valid': formlogin.get('usuario')?.valid && formlogin.get('usuario')?.touched,
@@ -20,15 +21,16 @@
           <fa-icon [icon]="faUser" class="input-icon"></fa-icon>
           <input formControlName="usuario" name="usuario" type="text" placeholder="Usuario" required />
 
-          <div class="error-message" *ngIf="formlogin.get('usuario')?.errors && formlogin.get('usuario')?.touched">
+          <div class="error-message" *ngIf="formlogin.get('usuario')?.touched && formlogin.get('usuario')?.errors">
             <span *ngIf="formlogin.get('usuario')?.errors?.['required']">El usuario es obligatorio.</span>
             <span *ngIf="formlogin.get('usuario')?.errors?.['minlength']">
-              Usuario Debe Tener Mínimo {{ formlogin.get('usuario')?.errors?.['minlength']?.requiredLength }} caracteres.
+              Usuario debe tener mínimo {{ formlogin.get('usuario')?.errors?.['minlength']?.requiredLength }} caracteres.
             </span>
           </div>
         </div>
 
-        <div class="input-container"
+        <!-- Contraseña -->
+        <div class="input-container password-container"
           [ngClass]="{
             'valid': formlogin.get('contraseña')?.valid && formlogin.get('contraseña')?.touched,
             'invalid': formlogin.get('contraseña')?.invalid && formlogin.get('contraseña')?.touched
@@ -37,17 +39,31 @@
             [icon]="formlogin.get('contraseña')?.invalid && formlogin.get('contraseña')?.touched ? faLockOpen : faLock" 
             class="input-icon">
           </fa-icon>
-          <input formControlName="contraseña" name="password" type="password" placeholder="Contraseña" required />
+          
+          <input
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="contraseña"
+            name="password"
+            placeholder="Contraseña"
+            required
+          />
 
-          <div class="error-message" *ngIf="formlogin.get('contraseña')?.errors && formlogin.get('contraseña')?.touched">
-            <span *ngIf="formlogin.get('contraseña')?.errors?.['required']">La Contraseña es obligatoria.</span>
-            <span *ngIf="formlogin.get('contraseña')?.errors?.['minlength']">
-              Mínimo {{ formlogin.get('contraseña')?.errors?.['minlength']?.requiredLength }} caracteres.
+          <button type="button" class="toggle-password" (click)="hidePassword = !hidePassword">
+            <fa-icon [icon]="hidePassword ? faEye : faEyeSlash"></fa-icon>
+          </button>
+
+          <div class="error-message" *ngIf="formlogin.get('contraseña')?.touched && formlogin.get('contraseña')?.errors">
+            <span *ngIf="formlogin.get('contraseña')?.errors?.['required']">contraseña es obligatoria.</span>
+            <span *ngIf="formlogin.get('contraseña')?.errors?.['minlength'] && !formlogin.get('contraseña')?.errors?.['required']">
+              mínimo {{ formlogin.get('contraseña')?.errors?.['minlength']?.requiredLength }} caracteres.
             </span>
-            <span *ngIf="formlogin.get('contraseña')?.errors?.['pattern']">Alfanumérica y carácter especial.</span>
+            <span *ngIf="formlogin.get('contraseña')?.errors?.['pattern'] && !formlogin.get('contraseña')?.errors?.['required'] && !formlogin.get('contraseña')?.errors?.['minlength']">
+              alfanumerico y caracter especial
+            </span>
           </div>
         </div>
 
+        <!-- Botón Ingresar -->
         <button 
           type="submit" 
           [disabled]="formlogin.invalid" 

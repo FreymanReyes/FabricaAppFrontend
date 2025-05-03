@@ -1,93 +1,92 @@
-$primary-color: #3b82f6;
-$background-color: #0c0c1e;
-$card-background: rgba(255, 255, 255, 0.05);
-$text-color: #f1f5f9;
-$button-hover: lighten($primary-color, 10%);
-$border-radius: 12px;
+// Paleta de colores
+$navbar-bg-color: #0c0c1e;
+$navbar-text-color: #f1f5f9;
+$navbar-border-color: #3b82f6;
+$table-bg-color: rgba(255, 255, 255, 0.1);
+$table-border-color: #3b82f6;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
-
-* {
-  font-family: 'Outfit', sans-serif;
+// Contenedor de la tabla
+.table-container {
+  max-width: 1100px;  // Máximo ancho de la tabla
+  margin: 0 auto;     // Centra el contenedor
+  padding: 0 15px;    // Agrega espacio lateral
 }
 
-body {
-  background-color: $background-color;
-  color: $text-color;
-  margin: 0;
-  padding: 2rem;
-  box-sizing: border-box;
-}
-
+// Botón "Nuevo Producto"
 .demo-button-container {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1.5rem;
+  justify-content: flex-end;  // Alinea el botón a la derecha
+  margin: 20px 0;
+
+  .demo-button {
+    background-color: $navbar-border-color;
+    color: $navbar-text-color;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: darken($navbar-border-color, 10%);
+      transform: translateY(-2px);
+    }
+  }
 }
 
-.demo-button {
-  background-color: transparent;
-  border: 2px solid $primary-color;
-  color: $primary-color;
-  font-weight: 600;
-  border-radius: $border-radius;
-  padding: 0.5rem 1.25rem;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
+// Estilos para la tabla
+.demo-table {
+  width: 100%;  // La tabla ocupará el 100% del ancho de su contenedor
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;  // Margen superior e inferior
 
-  &:hover {
-    background-color: $primary-color;
-    color: white;
+  mat-header-cell {
+    background-color: $navbar-border-color;
+    color: $navbar-text-color;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px 20px;  // Aumentar el padding para más espacio
+  }
+
+  mat-cell {
+    text-align: center;
+    padding: 12px 20px;  // Aumentar el padding para más espacio
   }
 
   mat-icon {
-    vertical-align: middle;
-    margin-right: 4px;
+    font-size: 1.2rem;
+  }
+
+  mat-row:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  mat-header-row,
+  mat-row {
+    border-bottom: 1px solid $table-border-color;
+  }
+
+  .demo-button {
+    background-color: $navbar-border-color;
+    color: $navbar-text-color;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: darken($navbar-border-color, 10%);
+      transform: translateY(-2px);
+    }
+
+    mat-icon {
+      font-size: 1rem;
+    }
   }
 }
 
-.demo-table {
-  width: 100%;
-  background-color: $card-background;
-  border-radius: $border-radius;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
-
-  th {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: $text-color;
-    font-weight: 600;
-    padding: 1rem;
-    text-align: left;
-  }
-
-  td {
-    padding: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    color: $text-color;
-  }
-
-  tr:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-
-  button {
-    min-width: 32px;
-    height: 32px;
-    padding: 0.25rem 0.5rem;
-    border-radius: $border-radius;
-    background-color: transparent;
-    border: 1px solid $primary-color;
-    color: $primary-color;
-
-    mat-icon {
-      font-size: 18px;
-    }
-
-    &:hover {
-      background-color: $primary-color;
-      color: white;
-    }
-  }
+// Para la tabla cuando se muestra vacío o hay errores
+.mat-elevation-z8 {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
